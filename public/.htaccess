@@ -1,0 +1,15 @@
+RewriteEngine On
+
+# Impede que o Apache tente adivinhar extensões de arquivos
+Options -MultiViews
+
+# Garante que as pastas do sistema (app, views, etc) não sejam listadas no navegador
+Options -Indexes
+
+# Se o que o usuário digitou NÃO for um arquivo real (-f)
+RewriteCond %{REQUEST_FILENAME} !-f
+# E se NÃO for uma pasta real (-d)
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Redireciona tudo para o index.php passando o caminho na variável 'url'
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]

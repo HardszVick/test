@@ -10,7 +10,6 @@ class TeamController extends Controller
         $team = new Team();
         $data = $team->all();
 
-        // Agrupar por time
         $teams = [];
         foreach ($data as $row) {
             $teams[$row['idTeam']]['id'] = $row['idTeam'];
